@@ -137,7 +137,7 @@ cigarro_dataset = dataset_base.copy({
   'valid_images': './yolact/data/cigarro/Eval/JPEGImages/',
   'valid_info': './yolact/data/cigarro/Eval/eval_annotations.json',
   
-  'class_names': ('cigarro'),
+  'class_names': ('cigarro')
 })
 
 coco2014_dataset = dataset_base.copy({
