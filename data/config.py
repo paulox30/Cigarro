@@ -128,18 +128,16 @@ dataset_base = Config({
     'label_map': None
 })
 
-arandano_dataset = dataset_base.copy({
-    'name': 'arandano_dataset',
+cigarro_dataset = dataset_base.copy({
+  'name': 'Immersive Limit - Cigarette Butts',
 
-    'train_images': './yolact/data/arandano/Train/JPEGImages/',
-    'train_info':   './yolact/data/arandano/Train/train_annotations.json',
-
-    'valid_images': './yolact/data/arandano/Eval/JPEGImages/',
-    'valid_info':   './yolact/data/arandano/Eval/eval_annotations.json',
-
-    'has_gt': True,
-    'class_names': ('arandano'),
-    'label_map': { 1:  1 }
+  'train_images': './yolact/data/cigarro/Train/JPEGImages/',
+  'train_info': './yolact/data/cigarro/Train/train_annotations.json',
+  
+  'valid_images': './yolact/data/cigarro/Eval/JPEGImages/',
+  'valid_info': './yolact/data/cigarro/Eval/eval_annotations.json',
+  
+  'class_names': ('cigarro'),
 })
 
 coco2014_dataset = dataset_base.copy({
@@ -763,17 +761,14 @@ yolact_resnet50_config = yolact_base_config.copy({
     }),
 })
 
-yolact_resnet50_arandano_config = yolact_resnet50_config.copy({
-    'name': 'yolact_plus_resnet50_arandano',
+yolact_resnet50_cigarro_config = yolact_resnet50_config.copy({
+    'name': 'yolact_plus_resnet50_cig_butts',
     # Dataset stuff
-    'dataset': arandano_dataset,
-    'num_classes': len(arandano_dataset.class_names) + 1,
-    
-     # Image Size
-    'max_size': 1920, 
-    'backbone': resnet50_backbone.copy({
-        'pred_scales': [[int(x[0] / yolact_base_config.max_size * 1920)] for x in yolact_base_config.backbone.pred_scales],
-    }),
+    'dataset': cigarro_dataset,
+    'num_classes': len(cigarro_dataset.class_names) + 1,
+
+    # Image Size
+    'max_size': 512,
 })
 
 yolact_resnet50_pascal_config = yolact_resnet50_config.copy({
@@ -849,4 +844,3 @@ def set_cfg(config_name:str):
 def set_dataset(dataset_name:str):
     """ Sets the dataset of the current config. """
     cfg.dataset = eval(dataset_name)
-    
