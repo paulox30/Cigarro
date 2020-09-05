@@ -762,7 +762,7 @@ yolact_resnet50_config = yolact_base_config.copy({
 })
 
 yolact_resnet50_cigarro_config = yolact_resnet50_config.copy({
-    'name': 'yolact_plus_resnet50_cig_butts',
+    'name': 'yolact_plus_resnet50_cigarro',
     # Dataset stuff
     'dataset': cigarro_dataset,
     'num_classes': len(cigarro_dataset.class_names) + 1,
